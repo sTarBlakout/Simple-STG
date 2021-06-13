@@ -23,7 +23,7 @@ namespace Player
         private void ProcessMoveInput()
         {
             var hasInput = false;
-            
+
             if (Input.GetKey(KeyCode.A))
             {
                 Move(Direction.Left);
@@ -66,6 +66,7 @@ namespace Player
                 transform.position = currPos;
                 Tilt(direction);
             }
+            else Tilt(Direction.None);
         }
 
         private void Tilt(Direction direction)
