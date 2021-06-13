@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Global;
+using Ship;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [Header("Parts")] 
+        [SerializeField] private Transform rotatableBody;
+        [SerializeField] private GameObject gunsHolder;
+        
         [Header("Stats")]
         [SerializeField] private float speed;
         [SerializeField] private float tiltSpeed;
@@ -14,10 +21,34 @@ namespace Player
         [Header("Limitations")]
         [SerializeField] private float verticalLimit;
         [SerializeField] private float horizontalLimit;
+
+        private List<Gun> _guns;
+
+        private void Start()
+        {
+            // temporary for debug
+            Init();
+        }
+
+        public void Init()
+        {
+            _guns = gunsHolder.GetComponentsInChildren<Gun>().ToList();
+        }
         
         private void FixedUpdate()
         {
             ProcessMoveInput();
+            ProcessShootInput();
+        }
+
+        private void ProcessShootInput()
+        {
+            if (Input.GetKey(KeyCode.Space)) Shoot();
+        }
+
+        private void Shoot()
+        {
+            foreach (var gun in _guns) gun.Shoot();
         }
 
         private void ProcessMoveInput()
@@ -80,7 +111,7 @@ namespace Player
                 default: rotateAngle = 0f; break;
             }
             
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, rotateAngle), tiltSpeed);
+            rotatableBody.rotation = Quaternion.Slerp(rotatableBody.rotation, Quaternion.Euler(0, 0, rotateAngle), tiltSpeed);
         }
     }
 }
