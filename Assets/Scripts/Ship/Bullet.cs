@@ -17,6 +17,7 @@ namespace Ship
         
         public void Init(float damage, float speed)
         {
+            TempContainer.Instance.MoveToContainer(gameObject);
             _speed = speed;
             _damage = damage;
         }
