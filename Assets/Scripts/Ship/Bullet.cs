@@ -1,4 +1,5 @@
 ﻿using System;
+using Enemy;
 using UnityEngine;
 
 namespace Ship
@@ -20,6 +21,16 @@ namespace Ship
             TempContainer.Instance.MoveToContainer(gameObject);
             _speed = speed;
             _damage = damage;
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            var spaceObject = other.GetComponent<SpaceObject>();
+            if (spaceObject != null)
+            {
+                spaceObject.Damage(_damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

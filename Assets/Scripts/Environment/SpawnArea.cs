@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SpawnArea : MonoBehaviour
+namespace Environment
 {
-    [SerializeField] private float width;
-
-    public Vector3 GetSpawnPosition()
+    public class SpawnArea : MonoBehaviour
     {
-        return new Vector3(Random.Range(-width, width), transform.position.y, transform.position.z);
+        [SerializeField] private float width;
+
+        public Vector3 GetSpawnPosition()
+        {
+            return new Vector3(Random.Range(-width, width), transform.position.y, transform.position.z);
+        }
     }
 }

@@ -226,15 +226,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04cd22470f77a354bbde0339732c58a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetwWaves: 5
-  timeBetwSpawns: {x: 0, y: 0}
-  waveHpMod: 0
-  waveNumberMod: 0
-  spaceObjectsForWaves: []
+  timeBetwWaves: 0.5
+  timeBetwSpawns: {x: 0.5, y: 5}
+  waveHpMod: 1.2
+  waveNumberMod: 1.4
+  spaceObjectsForWaves:
+  - {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
+  - {fileID: 1056666096333670, guid: f603e71ddc270d54192200e95673e2a6, type: 3}
   playerPrefab: {fileID: 834576260396741702, guid: fb73f060b15dbbd4184bf157fe86f081,
     type: 3}
   playerSpawnPosition: {fileID: 704113348}
-  spawnArea: {fileID: 0}
+  spawnArea: {fileID: 967145100}
 --- !u!4 &382388404
 Transform:
   m_ObjectHideFlags: 0
