@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatableBody: {fileID: 9218738288236993081}
   gunsHolder: {fileID: 8403453542357636576}
-  speed: 0.4
+  speed: 0.25
   tiltSpeed: 0.1
   tiltMaxAngle: 30
   verticalLimit: 8.5
