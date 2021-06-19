@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Ship;
 using UnityEngine;
 
@@ -6,8 +7,15 @@ namespace Enemy
 {
     public abstract class SpaceObject : MonoBehaviour
     {
+        [Header("Stats")]
         [SerializeField] protected float speed = 1f;
         [SerializeField] protected float health = 1f;
+
+        [Header("Components")]
+        [SerializeField] protected GameObject graphics;
+        [SerializeField] protected GameObject explosionPrefab;
+
+        public bool IsDestroyed { get; private set; }
 
         public virtual void Init(float healthMod)
         {
@@ -22,7 +30,9 @@ namespace Enemy
 
         public virtual void Die()
         {
-            Destroy(gameObject);
+            IsDestroyed = true;
+            graphics.GetComponent<MeshRenderer>().enabled = false;
+            Instantiate(explosionPrefab, transform);
         }
     }
 }

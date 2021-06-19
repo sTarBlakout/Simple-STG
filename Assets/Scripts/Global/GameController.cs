@@ -34,6 +34,23 @@ namespace Global
             Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity);
             StartCoroutine(WaveSpawner());
         }
+        
+        public  static SpaceObject TryGetParentSpaceObject(Transform obj)
+        {
+            var spaceObject = obj.GetComponent<SpaceObject>();
+            
+            while (spaceObject == null)
+            {
+                if (obj.parent != null)
+                {
+                    obj = obj.parent;
+                    spaceObject = obj.GetComponent<SpaceObject>();
+                }
+                else break;
+            }
+
+            return spaceObject;
+        }
 
         private IEnumerator WaveSpawner()
         {

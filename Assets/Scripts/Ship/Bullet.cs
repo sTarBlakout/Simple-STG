@@ -1,5 +1,6 @@
 ﻿using System;
 using Enemy;
+using Global;
 using UnityEngine;
 
 namespace Ship
@@ -25,9 +26,10 @@ namespace Ship
         
         private void OnTriggerEnter(Collider other)
         {
-            var spaceObject = other.GetComponent<SpaceObject>();
+            var spaceObject = GameController.TryGetParentSpaceObject(other.transform);
             if (spaceObject != null)
             {
+                if (spaceObject.IsDestroyed) return;
                 spaceObject.Damage(_damage);
                 Destroy(gameObject);
             }

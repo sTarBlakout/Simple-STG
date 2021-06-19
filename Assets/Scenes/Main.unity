@@ -226,9 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04cd22470f77a354bbde0339732c58a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetwWaves: 0.5
+  timeBetwWaves: 10
   timeBetwSpawns: {x: 0.5, y: 5}
-  waveHpMod: 1.2
+  waveHpMod: 1.005
   waveNumberMod: 1.4
   spaceObjectsForWaves:
   - {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}

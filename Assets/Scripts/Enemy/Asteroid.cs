@@ -5,8 +5,6 @@ using Random = UnityEngine.Random;
 
 public class Asteroid : SpaceObject
 {
-    [SerializeField] private GameObject graphics;
-    
     private float _xSpin, _ySpin, _zSpin;
     private float _rotationSpeed;
 
@@ -21,7 +19,8 @@ public class Asteroid : SpaceObject
     private void FixedUpdate()
     {
         transform.Translate(Vector3.back * speed);
-        graphics.transform.rotation = Quaternion.Euler(_xSpin, _ySpin, _zSpin);
+        if (!IsDestroyed)
+            graphics.transform.rotation = Quaternion.Euler(_xSpin, _ySpin, _zSpin);
         _xSpin += _rotationSpeed;
     }
 }

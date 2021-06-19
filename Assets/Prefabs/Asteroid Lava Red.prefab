@@ -40,7 +40,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014899055782066}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 5, z: 2}
@@ -55,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4992838361154946}
   - component: {fileID: 2782729222201299321}
-  - component: {fileID: 6913335441792628441}
   - component: {fileID: -6585670599662794977}
   m_Layer: 0
   m_Name: Asteroid Lava Red
@@ -92,22 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ea4e8166efbcc4bb544e16d28fcca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.05
   health: 10
   graphics: {fileID: 6776399508073750116}
---- !u!135 &6913335441792628441
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822345149752838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.9873888
-  m_Center: {x: 0.00000017881393, y: 0.0000035762787, z: -0.000003516674}
+  explosionPrefab: {fileID: 1070101629368536, guid: 1ef475ebfb44d964bb2037eaa9db1cb2,
+    type: 3}
 --- !u!54 &-6585670599662794977
 Rigidbody:
   m_ObjectHideFlags: 0

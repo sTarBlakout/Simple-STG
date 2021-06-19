@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4579553980399578}
   - component: {fileID: 3384417813781827256}
-  - component: {fileID: 7530406660258616670}
   - component: {fileID: -2837997604474340862}
   m_Layer: 0
   m_Name: Asteroid Lava Blue
@@ -47,22 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ea4e8166efbcc4bb544e16d28fcca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.05
   health: 10
   graphics: {fileID: 3003648540221420094}
---- !u!135 &7530406660258616670
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056666096333670}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.5686243
-  m_Center: {x: 0.00000023841858, y: -0.00000023841858, z: -0.0000021457672}
+  explosionPrefab: {fileID: 1886905727291396, guid: f73aa1558d792484a84e065c616866b5,
+    type: 3}
 --- !u!54 &-2837997604474340862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,7 +107,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619919757320400}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 4}
