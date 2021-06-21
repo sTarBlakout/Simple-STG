@@ -81,7 +81,7 @@ MonoBehaviour:
   rotatableBody: {fileID: 9218738288236993081}
   gunsHolder: {fileID: 8403453542357636576}
   explosion: {fileID: 1260936995157136, guid: 5507d9119dc28354b83167ec7c2cfe03, type: 3}
-  health: 10
+  health: 100
   speed: 0.25
   tiltSpeed: 0.1
   tiltMaxAngle: 30

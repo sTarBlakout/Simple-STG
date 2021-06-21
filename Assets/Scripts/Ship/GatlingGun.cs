@@ -6,6 +6,7 @@ namespace Ship
     {
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletSpeed;
+        [SerializeField] private bool isEnemy;
 
         public override void Shoot()
         {
@@ -13,7 +14,7 @@ namespace Ship
             
             LastTimeShot = Time.time;
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
-            bullet.Init(damage, bulletSpeed);
+            bullet.Init(damage, bulletSpeed, isEnemy);
         }
     }
 }

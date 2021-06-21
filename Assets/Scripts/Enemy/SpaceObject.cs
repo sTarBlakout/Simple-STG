@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Player;
 using Ship;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace Enemy
 
         public virtual void Damage(float damage)
         {
+            if (IsDestroyed) return;
             health -= damage;
             if (health <= 0) Die();
         }
