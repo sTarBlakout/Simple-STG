@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Enemy;
 using Environment;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Global
 {
@@ -19,8 +22,15 @@ namespace Global
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private Transform playerSpawnPosition;
         [SerializeField] private SpawnArea spawnArea;
-    
-        private bool _isGameOver;
+
+        private static GameController _instance;
+        public static GameController instance => _instance;
+        public bool IsGameOver;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
 
         void Start()
         {
@@ -29,13 +39,13 @@ namespace Global
 
         public void StartGame()
         {
-            _isGameOver = false;
+            IsGameOver = false;
 
             Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity);
             StartCoroutine(WaveSpawner());
         }
-        
-        public  static SpaceObject TryGetParentSpaceObject(Transform obj)
+
+        public static SpaceObject TryGetParentSpaceObject(Transform obj)
         {
             var spaceObject = obj.GetComponent<SpaceObject>();
             
@@ -52,11 +62,16 @@ namespace Global
             return spaceObject;
         }
 
+        public void FinishGame()
+        {
+            IsGameOver = true;
+        }
+
         private IEnumerator WaveSpawner()
         {
             var waveCounter = 1;
 
-            while (!_isGameOver)
+            while (!IsGameOver)
             {
                 yield return new WaitForSeconds(timeBetwWaves);
                 var spaceObjects = GetSpaceObjectsThisWave(waveCounter);

@@ -12,8 +12,12 @@ namespace Player
         [Header("Parts")] 
         [SerializeField] private Transform rotatableBody;
         [SerializeField] private GameObject gunsHolder;
+
+        [Header("Prefabs")] 
+        [SerializeField] private GameObject explosion;
         
         [Header("Stats")]
+        [SerializeField] private float health;
         [SerializeField] private float speed;
         [SerializeField] private float tiltSpeed;
         [SerializeField] private float tiltMaxAngle;
@@ -37,6 +41,8 @@ namespace Player
         
         private void FixedUpdate()
         {
+            if (GameController.instance.IsGameOver) return;
+            
             ProcessMoveInput();
             ProcessShootInput();
         }
@@ -112,6 +118,19 @@ namespace Player
             }
             
             rotatableBody.rotation = Quaternion.Slerp(rotatableBody.rotation, Quaternion.Euler(0, 0, rotateAngle), tiltSpeed);
+        }
+
+        private void Die()
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            GameController.instance.FinishGame();
+            Destroy(rotatableBody.gameObject);
+        }
+
+        public void Damage(float damage)
+        {
+            health -= damage;
+            if (health <= 0f) Die();
         }
     }
 }
