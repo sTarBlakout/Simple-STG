@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca5c9cd01a214a4aa95513d9addd0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 0.25
   health: 8
   collisionDamage: 10
   graphics: {fileID: 1916788754009916}

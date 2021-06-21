@@ -43,7 +43,7 @@ namespace Ship
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    other.transform.parent.parent.parent.GetComponent<PlayerController>().Damage(_damage);
+                    other.GetComponent<PlayerController>().Damage(_damage);
                     Destroy(gameObject);
                 }
             }

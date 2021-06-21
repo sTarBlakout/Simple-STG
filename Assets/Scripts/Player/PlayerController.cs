@@ -17,7 +17,7 @@ namespace Player
         [SerializeField] private GameObject explosion;
         
         [Header("Stats")]
-        [SerializeField] private float health;
+        [SerializeField] public float initHealth;
         [SerializeField] private float speed;
         [SerializeField] private float tiltSpeed;
         [SerializeField] private float tiltMaxAngle;
@@ -27,6 +27,7 @@ namespace Player
         [SerializeField] private float horizontalLimit;
 
         private List<Gun> _guns;
+        public float health;
 
         private void Start()
         {
@@ -36,6 +37,7 @@ namespace Player
 
         public void Init()
         {
+            health = initHealth;
             _guns = gunsHolder.GetComponentsInChildren<Gun>().ToList();
         }
         

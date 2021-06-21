@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Enemy;
 using Environment;
+using Player;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,10 +24,13 @@ namespace Global
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private Transform playerSpawnPosition;
         [SerializeField] private SpawnArea spawnArea;
+        [SerializeField] private HealthBarHandler healthBar;
 
         private static GameController _instance;
         public static GameController instance => _instance;
-        public bool IsGameOver;
+        
+        [HideInInspector] public bool IsGameOver;
+        [HideInInspector] public PlayerController player;
 
         private void Awake()
         {
@@ -41,7 +46,9 @@ namespace Global
         {
             IsGameOver = false;
 
-            Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity);
+            player = Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity).GetComponent<PlayerController>();
+            healthBar.Init(player);
+            
             StartCoroutine(WaveSpawner());
         }
 

@@ -44,7 +44,7 @@ namespace Enemy
             if (IsDestroyed) return;
             if (other.gameObject.CompareTag("Player"))
             {
-                other.transform.parent.parent.parent.GetComponent<PlayerController>().Damage(collisionDamage);
+                other.GetComponent<PlayerController>().Damage(collisionDamage);
                 Die();
             }
         }
