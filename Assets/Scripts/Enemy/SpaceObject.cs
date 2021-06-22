@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Global;
 using Player;
 using Ship;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Enemy
         [SerializeField] protected float speed = 1f;
         [SerializeField] protected float health = 1f;
         [SerializeField] protected float collisionDamage;
+        [SerializeField] protected int score;
 
         [Header("Components")]
         [SerializeField] protected GameObject graphics;
@@ -35,11 +37,12 @@ namespace Enemy
         public virtual void Die()
         {
             IsDestroyed = true;
-            graphics.GetComponent<MeshRenderer>().enabled = false;
-            Instantiate(explosionPrefab, transform);
+            if (graphics != null) graphics.GetComponent<MeshRenderer>().enabled = false;
+            if (explosionPrefab != null) Instantiate(explosionPrefab, transform);
+            GameController.instance.AddScore(score);
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (IsDestroyed) return;
             if (other.gameObject.CompareTag("Player"))

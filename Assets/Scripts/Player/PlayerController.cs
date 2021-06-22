@@ -28,6 +28,8 @@ namespace Player
 
         [HideInInspector] public float health;
         [HideInInspector] public bool isDead;
+
+        public float CurrDamage => _guns?[0].damage ?? 0f;
         
         private List<Gun> _guns;
 
@@ -137,6 +139,12 @@ namespace Player
         {
             health -= damage;
             if (health <= 0f) Die();
+        }
+        
+        public void Boost(float damage, float heal)
+        {
+            health = Mathf.Min(health + heal, initHealth);
+            foreach (var gun in _guns) gun.damage += damage;
         }
     }
 }

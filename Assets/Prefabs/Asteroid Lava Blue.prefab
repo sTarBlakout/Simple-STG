@@ -49,6 +49,7 @@ MonoBehaviour:
   speed: 0.1
   health: 10
   collisionDamage: 3
+  score: 5
   graphics: {fileID: 3003648540221420094}
   explosionPrefab: {fileID: 1886905727291396, guid: f73aa1558d792484a84e065c616866b5,
     type: 3}

@@ -7,6 +7,7 @@ using Environment;
 using Player;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Global
@@ -26,6 +27,8 @@ namespace Global
         [SerializeField] private SpawnArea spawnArea;
         [SerializeField] private HealthBarHandler healthBar;
         [SerializeField] private GameObject startButton;
+        [SerializeField] private Text scoreText;
+        [SerializeField] private Text damageText;
 
         private static GameController _instance;
         public static GameController instance => _instance;
@@ -34,6 +37,7 @@ namespace Global
         [HideInInspector] public PlayerController player;
 
         private Coroutine _waveSpawner;
+        private int score;
 
         private void Awake()
         {
@@ -43,12 +47,24 @@ namespace Global
         private void Start()
         {
             healthBar.gameObject.SetActive(false);
+            damageText.gameObject.SetActive(false);
+            score = 0;
+            AddScore(0);
+        }
+
+        private void Update()
+        {
+            if (player != null && !IsGameOver)
+                damageText.text = "Damage: " + player.CurrDamage;
         }
 
         public void StartGame()
         {
             startButton.SetActive(false);
             healthBar.gameObject.SetActive(true);
+            damageText.gameObject.SetActive(true);
+            score = 0;
+            AddScore(0);
             IsGameOver = false;
 
             if (player != null) Destroy(player.gameObject);
@@ -75,11 +91,18 @@ namespace Global
             return spaceObject;
         }
 
+        public void AddScore(int value)
+        {
+            score += value;
+            scoreText.text = "Score: " + score;
+        }
+
         public void FinishGame()
         {
             IsGameOver = true;
             startButton.SetActive(true);
             healthBar.gameObject.SetActive(false);
+            damageText.gameObject.SetActive(false);
             StopCoroutine(_waveSpawner);
         }
 
