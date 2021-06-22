@@ -6,7 +6,7 @@ namespace Ship
     public abstract class Gun : MonoBehaviour
     {
         [SerializeField] private float fireRate;
-        
+
         public float damage;
         protected float LastTimeShot = 0f;
 

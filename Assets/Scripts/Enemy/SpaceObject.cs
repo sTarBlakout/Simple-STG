@@ -19,6 +19,7 @@ namespace Enemy
         [Header("Components")]
         [SerializeField] protected GameObject graphics;
         [SerializeField] protected GameObject explosionPrefab;
+        [SerializeField] protected AudioClip deathSound;
 
         public bool IsDestroyed { get; private set; }
 
@@ -37,6 +38,7 @@ namespace Enemy
         public virtual void Die()
         {
             IsDestroyed = true;
+            if (deathSound != null)AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
             if (graphics != null) graphics.GetComponent<MeshRenderer>().enabled = false;
             if (explosionPrefab != null) Instantiate(explosionPrefab, transform);
             GameController.instance.AddScore(score);

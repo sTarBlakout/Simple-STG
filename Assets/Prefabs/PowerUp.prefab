@@ -52,6 +52,7 @@ MonoBehaviour:
   graphics: {fileID: 9141977867832500612}
   explosionPrefab: {fileID: 1041383898900682, guid: 6415f946f87d42f408f61c846221beb6,
     type: 3}
+  deathSound: {fileID: 8300000, guid: 57d16b23dddd17d4eb0bf5beef334dfb, type: 3}
   damageBoost: 10
   healthBoost: 5
 --- !u!135 &6557750157305180900

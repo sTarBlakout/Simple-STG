@@ -15,6 +15,7 @@ namespace Player
 
         [Header("Prefabs")] 
         [SerializeField] private GameObject explosion;
+        [SerializeField] private AudioClip explosionSound;
         
         [Header("Stats")]
         [SerializeField] public float initHealth;
@@ -130,6 +131,7 @@ namespace Player
         {
             if (isDead) return;
             isDead = true;
+            AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position);
             Destroy(rotatableBody.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
             GameController.instance.FinishGame();

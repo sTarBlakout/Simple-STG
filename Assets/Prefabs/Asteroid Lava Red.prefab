@@ -98,6 +98,7 @@ MonoBehaviour:
   graphics: {fileID: 6776399508073750116}
   explosionPrefab: {fileID: 1070101629368536, guid: 1ef475ebfb44d964bb2037eaa9db1cb2,
     type: 3}
+  deathSound: {fileID: 8300000, guid: af8a56de57d472044af344d2779ae801, type: 3}
 --- !u!54 &-6585670599662794977
 Rigidbody:
   m_ObjectHideFlags: 0
