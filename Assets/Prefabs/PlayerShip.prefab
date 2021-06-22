@@ -83,7 +83,7 @@ MonoBehaviour:
   gunsHolder: {fileID: 8403453542357636576}
   explosion: {fileID: 1260936995157136, guid: 5507d9119dc28354b83167ec7c2cfe03, type: 3}
   explosionSound: {fileID: 8300000, guid: c9f69fbc9abcb5047ac7802ccf3e3aa0, type: 3}
-  initHealth: 20
+  initHealth: 100
   speed: 0.25
   tiltSpeed: 0.1
   tiltMaxAngle: 30
