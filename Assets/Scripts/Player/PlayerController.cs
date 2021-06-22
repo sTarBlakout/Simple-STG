@@ -26,8 +26,10 @@ namespace Player
         [SerializeField] private float verticalLimit;
         [SerializeField] private float horizontalLimit;
 
+        [HideInInspector] public float health;
+        [HideInInspector] public bool isDead;
+        
         private List<Gun> _guns;
-        public float health;
 
         private void Start()
         {
@@ -43,7 +45,7 @@ namespace Player
         
         private void FixedUpdate()
         {
-            if (GameController.instance.IsGameOver) return;
+            if (isDead) return;
             
             ProcessMoveInput();
             ProcessShootInput();
@@ -124,9 +126,11 @@ namespace Player
 
         private void Die()
         {
+            if (isDead) return;
+            isDead = true;
+            Destroy(rotatableBody.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
             GameController.instance.FinishGame();
-            Destroy(rotatableBody.gameObject);
         }
 
         public void Damage(float damage)

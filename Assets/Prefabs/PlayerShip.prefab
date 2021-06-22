@@ -82,13 +82,14 @@ MonoBehaviour:
   rotatableBody: {fileID: 9218738288236993081}
   gunsHolder: {fileID: 8403453542357636576}
   explosion: {fileID: 1260936995157136, guid: 5507d9119dc28354b83167ec7c2cfe03, type: 3}
-  initHealth: 100
+  initHealth: 10
   speed: 0.25
   tiltSpeed: 0.1
   tiltMaxAngle: 30
   verticalLimit: 8.5
   horizontalLimit: 16
   health: 100
+  isDead: 0
 --- !u!54 &3952137023035047193
 Rigidbody:
   m_ObjectHideFlags: 0

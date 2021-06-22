@@ -25,6 +25,7 @@ namespace Global
         [SerializeField] private Transform playerSpawnPosition;
         [SerializeField] private SpawnArea spawnArea;
         [SerializeField] private HealthBarHandler healthBar;
+        [SerializeField] private GameObject startButton;
 
         private static GameController _instance;
         public static GameController instance => _instance;
@@ -32,24 +33,29 @@ namespace Global
         [HideInInspector] public bool IsGameOver;
         [HideInInspector] public PlayerController player;
 
+        private Coroutine _waveSpawner;
+
         private void Awake()
         {
             _instance = this;
         }
 
-        void Start()
+        private void Start()
         {
-            StartGame();
+            healthBar.gameObject.SetActive(false);
         }
 
         public void StartGame()
         {
+            startButton.SetActive(false);
+            healthBar.gameObject.SetActive(true);
             IsGameOver = false;
 
+            if (player != null) Destroy(player.gameObject);
             player = Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity).GetComponent<PlayerController>();
             healthBar.Init(player);
             
-            StartCoroutine(WaveSpawner());
+            _waveSpawner = StartCoroutine(WaveSpawner());
         }
 
         public static SpaceObject TryGetParentSpaceObject(Transform obj)
@@ -72,6 +78,9 @@ namespace Global
         public void FinishGame()
         {
             IsGameOver = true;
+            startButton.SetActive(true);
+            healthBar.gameObject.SetActive(false);
+            StopCoroutine(_waveSpawner);
         }
 
         private IEnumerator WaveSpawner()
