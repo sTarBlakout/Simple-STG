@@ -158,10 +158,10 @@ namespace Player
         {
             if (isDead) return;
             isDead = true;
-            AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position);
+            if (Camera.main != null) AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position);
             Destroy(rotatableBody.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
-            GameController.instance.FinishGame();
+            if (GameController.instance != null) GameController.instance.FinishGame();
         }
 
         /// <summary>
