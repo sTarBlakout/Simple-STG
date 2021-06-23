@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Enemy;
 using Environment;
 using Player;
@@ -12,6 +10,9 @@ using Random = UnityEngine.Random;
 
 namespace Global
 {
+    /// <summary>
+    /// Class which controls gameplay workflow.
+    /// </summary>
     public class GameController : MonoBehaviour
     {
         [Header("Config")]
@@ -39,11 +40,21 @@ namespace Global
         private Coroutine _waveSpawner;
         private int score;
 
+        /// <summary>
+        /// Unity event inherited from Unity MonoBehavior class.
+        /// Is called first once when Monobehavior object is created.
+        /// Initializes Singleton of this class
+        /// </summary>
         private void Awake()
         {
             _instance = this;
         }
 
+        /// <summary>
+        /// Unity event inherited from Unity MonoBehavior class
+        /// Is called after "Awake" once when Monobehavior object is created.
+        /// Does initialization logic
+        /// </summary>
         private void Start()
         {
             healthBar.gameObject.SetActive(false);
@@ -52,12 +63,20 @@ namespace Global
             AddScore(0);
         }
 
+        /// <summary>
+        /// Unity event inherited from Unity MonoBehavior class
+        /// Is called every frame after "Start".
+        /// Updates player damage UI text
+        /// </summary>
         private void Update()
         {
             if (player != null && !IsGameOver)
                 damageText.text = "Damage: " + player.CurrDamage;
         }
 
+        /// <summary>
+        /// Game start method, called by "START" button.
+        /// </summary>
         public void StartGame()
         {
             startButton.SetActive(false);
@@ -69,11 +88,17 @@ namespace Global
 
             if (player != null) Destroy(player.gameObject);
             player = Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity).GetComponent<PlayerController>();
+            player.Init();
             healthBar.Init(player);
             
             _waveSpawner = StartCoroutine(WaveSpawner());
         }
 
+        /// <summary>
+        /// Method for getting SpaceObject component from far parent of passed object.
+        /// </summary>
+        /// <param name="obj">Object which parents may have SpaceObject component.</param>
+        /// <returns>Returns null if didn't find anything or SpaceObject component of the parent.</returns>
         public static SpaceObject TryGetParentSpaceObject(Transform obj)
         {
             var spaceObject = obj.GetComponent<SpaceObject>();
@@ -91,12 +116,19 @@ namespace Global
             return spaceObject;
         }
 
+        /// <summary>
+        /// Adds score to current play session.
+        /// </summary>
+        /// <param name="value">Amount of points to add.</param>
         public void AddScore(int value)
         {
             score += value;
             scoreText.text = "Score: " + score;
         }
 
+        /// <summary>
+        /// Finishes current game session.
+        /// </summary>
         public void FinishGame()
         {
             IsGameOver = true;
@@ -106,6 +138,9 @@ namespace Global
             StopCoroutine(_waveSpawner);
         }
 
+        /// <summary>
+        /// Wave spawning coroutine method, should be called with StartCoroutine().
+        /// </summary>
         private IEnumerator WaveSpawner()
         {
             var waveCounter = 1;
@@ -125,6 +160,11 @@ namespace Global
             }
         }
 
+        /// <summary>
+        /// Gets list of GameObjects to spawn in next wave using passed value and random.
+        /// </summary>
+        /// <param name="waveNumber">Current wave number.</param>
+        /// <returns>List of GameObjects to spawn in next wave</returns>
         private List<GameObject> GetSpaceObjectsThisWave(int waveNumber)
         {
             var spaceObjects = new List<GameObject>();

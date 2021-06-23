@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Global;
+﻿using Global;
 using UnityEngine;
 
-public class GameAreaManager : MonoBehaviour
+namespace Environment
 {
-    private void OnTriggerExit(Collider other)
+    /// <summary>
+    /// Class which manages game area
+    /// </summary>
+    public class GameAreaManager : MonoBehaviour
     {
-        var spaceObject = GameController.TryGetParentSpaceObject(other.transform);
-        Destroy(spaceObject != null ? spaceObject.gameObject : other.gameObject);
+        /// <summary>
+        /// Unity event for checking if any collider leaves this object.
+        /// Destroys all objects which go out of the game area.
+        /// </summary>
+        /// <param name="other">Object with collider component which left current object.</param>
+        private void OnTriggerExit(Collider other)
+        {
+            var spaceObject = GameController.TryGetParentSpaceObject(other.transform);
+            Destroy(spaceObject != null ? spaceObject.gameObject : other.gameObject);
+        }
     }
 }

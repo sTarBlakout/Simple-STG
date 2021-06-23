@@ -2,6 +2,9 @@
 
 namespace Ship
 {
+    /// <summary>
+    /// Manages gatling gun.
+    /// </summary>
     public class GatlingGun : Gun
     {
         [SerializeField] private GameObject bulletPrefab;
@@ -9,6 +12,9 @@ namespace Ship
         [SerializeField] private float bulletSpeed;
         [SerializeField] private bool isEnemy;
 
+        /// <summary>
+        /// Overrides abstract Shoot method. Shoots a bullet with sound.
+        /// </summary>
         public override void Shoot()
         {
             if (!CanShoot()) return;

@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Player
 {
+    /// <summary>
+    /// Class which manages Player Ship behavior.
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         [Header("Parts")] 
@@ -34,18 +37,22 @@ namespace Player
         
         private List<Gun> _guns;
 
-        private void Start()
-        {
-            // temporary for debug
-            Init();
-        }
-
+        /// <summary>
+        /// Unity event inherited from Unity MonoBehavior class
+        /// Is called after "Awake" once when Monobehavior object is created.
+        /// Does initialization logic for health. Also collects all attached guns to list.
+        /// </summary>
         public void Init()
         {
             health = initHealth;
             _guns = gunsHolder.GetComponentsInChildren<Gun>().ToList();
         }
         
+        /// <summary>
+        /// Unity event inherited from Unity MonoBehavior class.
+        /// Is called every fixed "physics" frame after "Start".
+        /// Calls methods for processing shooting and moving input.
+        /// </summary>
         private void FixedUpdate()
         {
             if (isDead) return;
@@ -54,16 +61,25 @@ namespace Player
             ProcessShootInput();
         }
 
+        /// <summary>
+        /// Processes shooting input.
+        /// </summary>
         private void ProcessShootInput()
         {
             if (Input.GetKey(KeyCode.Space)) Shoot();
         }
 
+        /// <summary>
+        /// Shoots from all attached guns.
+        /// </summary>
         private void Shoot()
         {
             foreach (var gun in _guns) gun.Shoot();
         }
 
+        /// <summary>
+        /// Processes moving input.
+        /// </summary>
         private void ProcessMoveInput()
         {
             var hasInput = false;
@@ -92,6 +108,10 @@ namespace Player
             if (!hasInput) Move(Direction.None);
         }
 
+        /// <summary>
+        /// Moves ship in passed direction.
+        /// </summary>
+        /// <param name="direction">Direction to move.</param>
         private void Move(Direction direction)
         {
             var currPos = transform.position;
@@ -113,6 +133,10 @@ namespace Player
             else Tilt(Direction.None);
         }
 
+        /// <summary>
+        ///  Tilts ship depending on passed moving direction.
+        /// </summary>
+        /// <param name="direction">Moving direction.</param>
         private void Tilt(Direction direction)
         {
             float rotateAngle;
@@ -127,6 +151,9 @@ namespace Player
             rotatableBody.rotation = Quaternion.Slerp(rotatableBody.rotation, Quaternion.Euler(0, 0, rotateAngle), tiltSpeed);
         }
 
+        /// <summary>
+        /// Processes player ship death.
+        /// </summary>
         private void Die()
         {
             if (isDead) return;
@@ -137,12 +164,21 @@ namespace Player
             GameController.instance.FinishGame();
         }
 
+        /// <summary>
+        /// Processes incoming damage.
+        /// </summary>
+        /// <param name="damage">Damage value.</param>
         public void Damage(float damage)
         {
             health -= damage;
             if (health <= 0f) Die();
         }
         
+        /// <summary>
+        /// Processes incoming boost.
+        /// </summary>
+        /// <param name="damage">Damage boost value.</param>
+        /// <param name="heal">Health boost value.</param>
         public void Boost(float damage, float heal)
         {
             health = Mathf.Min(health + heal, initHealth);
