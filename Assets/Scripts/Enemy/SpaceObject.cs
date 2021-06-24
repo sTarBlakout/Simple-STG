@@ -15,7 +15,7 @@ namespace Enemy
     {
         [Header("Stats")]
         [SerializeField] protected float speed = 1f;
-        [SerializeField] protected float health = 1f;
+        [SerializeField] public float health = 1f;
         [SerializeField] protected float collisionDamage;
         [SerializeField] protected int score;
 
@@ -52,10 +52,10 @@ namespace Enemy
         public virtual void Die()
         {
             IsDestroyed = true;
-            if (deathSound != null)AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
+            if (deathSound != null && Camera.main != null)AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
             if (graphics != null) graphics.GetComponent<MeshRenderer>().enabled = false;
             if (explosionPrefab != null) Instantiate(explosionPrefab, transform);
-            GameController.instance.AddScore(score);
+            if (GameController.instance != null) GameController.instance.AddScore(score);
         }
 
         /// <summary>

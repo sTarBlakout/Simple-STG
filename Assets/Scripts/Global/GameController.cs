@@ -38,7 +38,7 @@ namespace Global
         [HideInInspector] public PlayerController player;
 
         private Coroutine _waveSpawner;
-        private int score;
+        public int score;
 
         /// <summary>
         /// Unity event inherited from Unity MonoBehavior class.
@@ -57,8 +57,8 @@ namespace Global
         /// </summary>
         private void Start()
         {
-            healthBar.gameObject.SetActive(false);
-            damageText.gameObject.SetActive(false);
+            if (healthBar != null) healthBar.gameObject.SetActive(false);
+            if (damageText != null) damageText.gameObject.SetActive(false);
             score = 0;
             AddScore(0);
         }
@@ -79,9 +79,9 @@ namespace Global
         /// </summary>
         public void StartGame()
         {
-            startButton.SetActive(false);
-            healthBar.gameObject.SetActive(true);
-            damageText.gameObject.SetActive(true);
+            if (startButton != null) startButton.SetActive(false);
+            if (healthBar != null) healthBar.gameObject.SetActive(true);
+            if (damageText != null) damageText.gameObject.SetActive(true);
             score = 0;
             AddScore(0);
             IsGameOver = false;
@@ -123,7 +123,7 @@ namespace Global
         public void AddScore(int value)
         {
             score += value;
-            scoreText.text = "Score: " + score;
+            if (scoreText != null) scoreText.text = "Score: " + score;
         }
 
         /// <summary>
@@ -132,10 +132,10 @@ namespace Global
         public void FinishGame()
         {
             IsGameOver = true;
-            startButton.SetActive(true);
-            healthBar.gameObject.SetActive(false);
-            damageText.gameObject.SetActive(false);
-            StopCoroutine(_waveSpawner);
+            if (startButton != null) startButton.SetActive(true);
+            if (healthBar != null) healthBar.gameObject.SetActive(false);
+            if (damageText != null) damageText.gameObject.SetActive(false);
+            if (_waveSpawner != null) StopCoroutine(_waveSpawner);
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace Ship
         /// </summary>
         public void Init(float damage, float speed, bool isEnemy)
         {
-            TempContainer.Instance.MoveToContainer(gameObject);
+            if (TempContainer.Instance != null) TempContainer.Instance.MoveToContainer(gameObject);
             _speed = speed;
             _damage = damage;
             _isEnemy = isEnemy;

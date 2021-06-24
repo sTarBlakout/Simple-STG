@@ -20,7 +20,7 @@ namespace Ship
             if (!CanShoot()) return;
             
             LastTimeShot = Time.time;
-            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            if (Camera.main != null) AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.Init(damage, bulletSpeed, isEnemy);
         }
