@@ -1465,6 +1465,11 @@ PrefabInstance:
       objectReference: {fileID: 967145100}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
+      propertyPath: waveHpMod
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
       propertyPath: damageText
       value: 
       objectReference: {fileID: 300847095}
@@ -1473,6 +1478,21 @@ PrefabInstance:
       propertyPath: startButton
       value: 
       objectReference: {fileID: 307023576}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
+      propertyPath: timeBetwWaves
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
+      propertyPath: waveNumberMod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
+      propertyPath: timeBetwSpawns.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
       propertyPath: playerSpawnPosition
