@@ -95,6 +95,14 @@ namespace Global
         }
 
         /// <summary>
+        /// Exits game, called by "EXIT" button.
+        /// </summary>
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+
+        /// <summary>
         /// Method for getting SpaceObject component from far parent of passed object.
         /// </summary>
         /// <param name="obj">Object which parents may have SpaceObject component.</param>
