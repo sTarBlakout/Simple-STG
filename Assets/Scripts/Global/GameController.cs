@@ -28,6 +28,7 @@ namespace Global
         [SerializeField] private SpawnArea spawnArea;
         [SerializeField] private HealthBarHandler healthBar;
         [SerializeField] private GameObject startButton;
+        [SerializeField] private GameObject exitButton;
         [SerializeField] private Text scoreText;
         [SerializeField] private Text damageText;
 
@@ -80,6 +81,7 @@ namespace Global
         public void StartGame()
         {
             if (startButton != null) startButton.SetActive(false);
+            if (exitButton != null) exitButton.SetActive(false);
             if (healthBar != null) healthBar.gameObject.SetActive(true);
             if (damageText != null) damageText.gameObject.SetActive(true);
             score = 0;
@@ -141,6 +143,7 @@ namespace Global
         {
             IsGameOver = true;
             if (startButton != null) startButton.SetActive(true);
+            if (exitButton != null) exitButton.SetActive(true);
             if (healthBar != null) healthBar.gameObject.SetActive(false);
             if (damageText != null) damageText.gameObject.SetActive(false);
             if (_waveSpawner != null) StopCoroutine(_waveSpawner);
