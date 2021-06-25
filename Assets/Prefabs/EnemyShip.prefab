@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  health: 8
-  collisionDamage: 10
+  health: 20
+  collisionDamage: 15
   score: 10
   graphics: {fileID: 1916788754009916}
   explosionPrefab: {fileID: 1818344333246822, guid: b8de9a2a96c504149bdb2dafd2555c81,
@@ -389,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
+        type: 3}
+      propertyPath: damage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
         type: 3}

@@ -1684,23 +1684,33 @@ PrefabInstance:
       objectReference: {fileID: 300847095}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
+      propertyPath: exitButton
+      value: 
+      objectReference: {fileID: 844836885}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
       propertyPath: startButton
       value: 
       objectReference: {fileID: 307023576}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
       propertyPath: timeBetwWaves
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
       propertyPath: waveNumberMod
-      value: 2
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
+        type: 3}
+      propertyPath: timeBetwSpawns.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}
       propertyPath: timeBetwSpawns.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1135608518522075690, guid: 5cd72723653f5ab488f749b6e8c36b02,
         type: 3}

@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  health: 3
-  collisionDamage: 10
+  health: 10
+  collisionDamage: 20
   score: 10
   graphics: {fileID: 6951874663427456983}
   explosionPrefab: {fileID: 1818344333246822, guid: b8de9a2a96c504149bdb2dafd2555c81,
@@ -394,6 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
         type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
@@ -481,6 +486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
+        type: 3}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
         type: 3}
@@ -813,6 +823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
+        type: 3}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3105715095675878686, guid: 7c126baf301b441438c32005e2b2f115,
         type: 3}
