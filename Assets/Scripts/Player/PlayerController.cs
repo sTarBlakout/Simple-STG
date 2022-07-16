@@ -36,6 +36,7 @@ namespace Player
         public float CurrDamage => _guns?[0].damage ?? 0f;
         
         private List<Gun> _guns;
+        private Joystick _joystick;
 
         /// <summary>
         /// Unity event inherited from Unity MonoBehavior class
@@ -46,6 +47,7 @@ namespace Player
         {
             health = initHealth;
             _guns = gunsHolder.GetComponentsInChildren<Gun>().ToList();
+            _joystick = FindObjectOfType<Joystick>();
         }
         
         /// <summary>
@@ -84,22 +86,22 @@ namespace Player
         {
             var hasInput = false;
 
-            if (Input.GetKey(KeyCode.A))
+            if (_joystick.Horizontal < -0.5f)
             {
                 Move(Direction.Left);
                 hasInput = true;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (_joystick.Horizontal > 0.5f)
             {
                 Move(Direction.Right);
                 hasInput = true;
             }
-            if (Input.GetKey(KeyCode.W))
+            if (_joystick.Vertical > 0.5f)
             {
                 Move(Direction.Forward);
                 hasInput = true;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (_joystick.Vertical < -0.5f)
             {
                 Move(Direction.Backward);
                 hasInput = true;
