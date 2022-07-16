@@ -70,8 +70,6 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 5648f06101645544080aafd27951d0e3, type: 3}
   gunsHolder: {fileID: 1884923625028029654}
   particlesToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 520511106199899490}
 --- !u!54 &8109643438782798535
 Rigidbody:
@@ -177,6 +175,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -201,6 +200,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &274715392484131967
 PrefabInstance:
   m_ObjectHideFlags: 0

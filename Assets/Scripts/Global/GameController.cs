@@ -5,6 +5,7 @@ using Environment;
 using Player;
 using UI;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,8 @@ namespace Global
     /// </summary>
     public class GameController : MonoBehaviour
     {
+        private static string REMOTE_CONFIG_URI = "http://localhost/get_config";
+        
         [Header("Config")]
         [SerializeField] private float timeBetwWaves;
         [SerializeField] private Vector2 timeBetwSpawns;
@@ -62,6 +65,27 @@ namespace Global
             if (damageText != null) damageText.gameObject.SetActive(false);
             score = 0;
             AddScore(0);
+            StartCoroutine(RequestRemoteConfiguration());
+        }
+        
+        private IEnumerator RequestRemoteConfiguration()
+        {
+            var uri = REMOTE_CONFIG_URI;
+            using (var webRequest = UnityWebRequest.Get(uri))
+            {
+                yield return webRequest.SendWebRequest();
+                var json = webRequest.downloadHandler.text;
+                if (webRequest.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log("Received: " + webRequest.downloadHandler.text);
+                    var config = RemoteConfig.CreateFromJSON(json);
+
+                    timeBetwWaves = config.TimeBetweenWaves;
+                    timeBetwSpawns = new Vector2(config.MinimumTimeBetweenSpawns, config.MaximumTimeBetweenSpawns);
+                    waveHpMod = config.WaveModificatorHP;
+                    waveNumberMod = config.WaveModificationNumber;
+                }
+            }
         }
 
         /// <summary>
@@ -189,5 +213,20 @@ namespace Global
 
             return spaceObjects;
         }
+    }
+    
+    [System.Serializable]
+    public class RemoteConfig
+    {
+        public static RemoteConfig CreateFromJSON(string jsonString)
+        {
+            return JsonUtility.FromJson<RemoteConfig>(jsonString);
+        }
+        
+        public float TimeBetweenWaves;
+        public float MinimumTimeBetweenSpawns;
+        public float MaximumTimeBetweenSpawns;
+        public float WaveModificatorHP;
+        public float WaveModificationNumber;
     }
 }
