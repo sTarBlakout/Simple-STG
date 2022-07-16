@@ -66,7 +66,7 @@ namespace Player
         /// </summary>
         private void ProcessShootInput()
         {
-            if (Input.GetKey(KeyCode.Space)) Shoot();
+            Shoot();
         }
 
         /// <summary>

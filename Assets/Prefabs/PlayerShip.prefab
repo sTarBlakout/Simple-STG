@@ -165,7 +165,7 @@ MonoBehaviour:
   tiltSpeed: 0.1
   tiltMaxAngle: 30
   verticalLimit: 8.5
-  horizontalLimit: 16
+  horizontalLimit: 4.5
   health: 100
   isDead: 0
 --- !u!54 &3952137023035047193

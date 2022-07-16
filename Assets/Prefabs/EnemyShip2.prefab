@@ -64,7 +64,7 @@ MonoBehaviour:
   health: 10
   collisionDamage: 20
   score: 10
-  graphics: {fileID: 0}
+  graphics: {fileID: 6547585402533410399}
   explosionPrefab: {fileID: 1818344333246822, guid: b8de9a2a96c504149bdb2dafd2555c81,
     type: 3}
   deathSound: {fileID: 8300000, guid: 5648f06101645544080aafd27951d0e3, type: 3}

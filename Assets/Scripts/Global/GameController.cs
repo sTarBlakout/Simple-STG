@@ -143,7 +143,7 @@ namespace Global
         {
             IsGameOver = true;
             if (startButton != null) startButton.SetActive(true);
-            if (exitButton != null) exitButton.SetActive(true);
+            // if (exitButton != null) exitButton.SetActive(true);
             if (healthBar != null) healthBar.gameObject.SetActive(false);
             if (damageText != null) damageText.gameObject.SetActive(false);
             if (_waveSpawner != null) StopCoroutine(_waveSpawner);
