@@ -79,7 +79,6 @@ namespace Global
                 {
                     Debug.Log("Received: " + webRequest.downloadHandler.text);
                     var config = RemoteConfig.CreateFromJSON(json);
-
                     timeBetwWaves = config.TimeBetweenWaves;
                     timeBetwSpawns = new Vector2(config.MinimumTimeBetweenSpawns, config.MaximumTimeBetweenSpawns);
                     waveHpMod = config.WaveModificatorHP;
