@@ -16,7 +16,7 @@ namespace Global
     /// </summary>
     public class GameController : MonoBehaviour
     {
-        private static string REMOTE_CONFIG_URI = "http://localhost/get_config";
+        private static string REMOTE_CONFIG_URI = "http://localhost:3000/configuration";
         
         [Header("Config")]
         [SerializeField] private float timeBetwWaves;
